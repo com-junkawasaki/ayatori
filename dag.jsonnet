@@ -37,12 +37,12 @@
         implementation: "core/cache.ts",
         merkle_hash: null
       },
-      nextjs_integration: {
-        id: "nextjs_integration",
-        type: "integration",
+      framework_adapter: {
+        id: "framework_adapter",
+        type: "adapter",
         dependencies: ["cache_manager"],
-        outputs: ["react_hooks", "nextjs_client"],
-        implementation: "nextjs/index.ts",
+        outputs: ["framework_bindings", "client_bindings"],
+        implementation: "framework/index.ts",
         merkle_hash: null
       }
     },
@@ -65,7 +65,7 @@
       },
       {
         from: "cache_manager",
-        to: "nextjs_integration",
+        to: "framework_adapter",
         data_flow: ["merkle_cache"]
       }
     ]
@@ -78,10 +78,10 @@
       "type_generator",
       "client_runtime",
       "cache_manager",
-      "nextjs_integration"
+      "framework_adapter"
     ],
     reverse_topological_order: [
-      "nextjs_integration",
+      "framework_adapter",
       "cache_manager",
       "client_runtime",
       "type_generator",
@@ -93,6 +93,6 @@
   state: {
     current_phase: "design",
     last_updated: "2024-01-01T00:00:00Z",
-    version: "1.0.0"
+    version: "1.1.0"
   }
 }

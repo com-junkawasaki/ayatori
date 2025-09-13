@@ -93,7 +93,7 @@ export default function RootLayout({ children }) {
 This library adopts a Merkle DAG-based process network architecture:
 
 ```
-gql_parser → type_generator → client_runtime → cache_manager → nextjs_integration
+gql_parser → type_generator → client_runtime → cache_manager → framework_adapter
 ```
 
 Each node plays the following roles:
@@ -102,7 +102,7 @@ Each node plays the following roles:
 - **type_generator**: Automatically generates TypeScript types
 - **client_runtime**: Implements the runtime client
 - **cache_manager**: Manages Merkle DAG-based caching
-- **nextjs_integration**: Integrates React Hooks with Next.js
+- **framework_adapter**: Provides framework-specific integrations (Next.js, React, Vue, Angular, Node.js)
 
 ## Advanced Features
 
@@ -153,7 +153,7 @@ console.log(`Merkle root: ${stats.merkleRoot}`);
 ### Content-Addressable Storage
 
 ```typescript
-import { ContentAddressableCache } from 'iso-gql-client';
+import { ContentAddressableCache } from 'ayatori';
 
 const caCache = new ContentAddressableCache();
 
@@ -162,6 +162,53 @@ const contentHash = caCache.setByContent('user-query', responseData);
 
 // Retrieve by hash
 const cachedData = caCache.getByContent(contentHash);
+```
+
+### Framework Adapters
+
+Ayatori supports multiple frameworks through a unified adapter system:
+
+```typescript
+import { initializeFramework } from 'ayatori';
+
+const client = createGQLClient({ endpoint: 'https://api.example.com/graphql' });
+const cache = new MerkleCacheManager();
+
+// Auto-detect framework and initialize
+const { bindings, clientBindings } = await initializeFramework(client, cache);
+
+// Or specify framework explicitly
+const { bindings, clientBindings } = await initializeFramework(client, cache, 'nextjs');
+```
+
+#### Supported Frameworks
+
+- **Next.js**: Full React hooks integration with SSR support
+- **React**: Standard React hooks for client-side applications
+- **Vue**: Vue 3 Composition API integration
+- **Angular**: Angular services and dependency injection
+- **Node.js**: Server-side GQL client for backend applications
+
+#### Custom Framework Adapter
+
+```typescript
+import { BaseFrameworkAdapter, frameworkRegistry } from 'ayatori';
+
+class CustomAdapter extends BaseFrameworkAdapter {
+  name = 'custom-framework';
+  version = '1.0.0';
+
+  protected async setup(): Promise<void> {
+    // Custom framework initialization
+  }
+
+  protected async cleanup(): Promise<void> {
+    // Custom framework cleanup
+  }
+}
+
+// Register custom adapter
+frameworkRegistry.register('custom-framework', new CustomAdapter());
 ```
 
 ## Development
