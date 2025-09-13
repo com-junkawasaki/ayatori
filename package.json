@@ -1,5 +1,5 @@
 {
-  "name": "iso-gql-client",
+  "name": "ayatori",
   "version": "1.0.0",
   "description": "ISO/IEC 39075:2024 GQL Client with TypeScript type safety and Merkle DAG caching",
   "main": "dist/index.js",
@@ -19,8 +19,16 @@
     "nextjs",
     "graph-database"
   ],
-  "author": "jun784",
+  "author": "jun784 <jun784@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jun784/ayatori.git"
+  },
+  "homepage": "https://github.com/jun784/ayatori#readme",
+  "bugs": {
+    "url": "https://github.com/jun784/ayatori/issues"
+  },
   "dependencies": {
     "graphql": "^16.8.1",
     "merkle-tools": "^1.4.1",

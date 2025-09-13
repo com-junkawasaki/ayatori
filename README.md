@@ -4,26 +4,26 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3.0-blue.svg)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-14.0.0-black.svg)](https://nextjs.org/)
 
-型安全でMerkle DAGベースのISO/IEC 39075:2024準拠のGQLクライアントライブラリです。
+A type-safe, Merkle DAG-based GQL client library compliant with ISO/IEC 39075:2024 standards.
 
-## 特徴
+## Features
 
-- ✅ **ISO/IEC 39075:2024準拠**: 最新のGQL標準に完全準拠
-- ✅ **完全型安全**: TypeScriptによる完全な型安全性を保証
-- ✅ **Merkle DAGキャッシュ**: コンテンツアドレス可能なキャッシュシステム
-- ✅ **プロセスネットワーク**: 決定論的ビルドと実行
-- ✅ **Next.js統合**: React Hooksによるシームレスな統合
-- ✅ **hataoriリンカー**: TypeScript Merkle Lambda Linkerとの統合
+- ✅ **ISO/IEC 39075:2024 Compliant**: Fully compliant with the latest GQL standard
+- ✅ **Complete Type Safety**: Ensures complete type safety through TypeScript
+- ✅ **Merkle DAG Cache**: Content-addressable caching system
+- ✅ **Process Network**: Deterministic build and execution
+- ✅ **Next.js Integration**: Seamless integration with React Hooks
+- ✅ **hataori Linker**: Integration with TypeScript Merkle Lambda Linker
 
-## インストール
+## Installation
 
 ```bash
 npm install iso-gql-client
 ```
 
-## クイックスタート
+## Quick Start
 
-### 基本的な使用例
+### Basic Usage Example
 
 ```typescript
 import { createGQLClient, useQuery } from 'iso-gql-client';
@@ -57,7 +57,7 @@ function MyComponent() {
 }
 ```
 
-### Next.jsアプリケーションの設定
+### Next.js Application Setup
 
 ```typescript
 // lib/gql-client.ts
@@ -88,25 +88,25 @@ export default function RootLayout({ children }) {
 }
 ```
 
-## アーキテクチャ
+## Architecture
 
-このライブラリはMerkle DAGベースのプロセスネットワークアーキテクチャを採用しています：
+This library adopts a Merkle DAG-based process network architecture:
 
 ```
 gql_parser → type_generator → client_runtime → cache_manager → nextjs_integration
 ```
 
-各ノードは以下の役割を担います：
+Each node plays the following roles:
 
-- **gql_parser**: GQLクエリの解析とAST生成
-- **type_generator**: TypeScript型の自動生成
-- **client_runtime**: 実行時クライアントの実装
-- **cache_manager**: Merkle DAGベースのキャッシュ管理
-- **nextjs_integration**: React HooksとNext.js統合
+- **gql_parser**: Parses GQL queries and generates AST
+- **type_generator**: Automatically generates TypeScript types
+- **client_runtime**: Implements the runtime client
+- **cache_manager**: Manages Merkle DAG-based caching
+- **nextjs_integration**: Integrates React Hooks with Next.js
 
-## 高度な機能
+## Advanced Features
 
-### 型安全なクエリビルダー
+### Type-Safe Query Builder
 
 ```typescript
 import { TypedQueryBuilder } from 'iso-gql-client';
@@ -133,7 +133,7 @@ const result = await queryBuilder.execute(`
 `);
 ```
 
-### Merkle DAGキャッシュ
+### Merkle DAG Cache
 
 ```typescript
 import { MerkleCacheManager } from 'iso-gql-client';
@@ -144,49 +144,49 @@ const cache = new MerkleCacheManager({
   enableMerkleValidation: true,
 });
 
-// キャッシュ統計の取得
+// Get cache statistics
 const stats = cache.getStats();
 console.log(`Cache size: ${stats.size}/${stats.maxSize}`);
 console.log(`Merkle root: ${stats.merkleRoot}`);
 ```
 
-### コンテンツアドレス可能ストレージ
+### Content-Addressable Storage
 
 ```typescript
 import { ContentAddressableCache } from 'iso-gql-client';
 
 const caCache = new ContentAddressableCache();
 
-// コンテンツによるキャッシュ
+// Cache by content
 const contentHash = caCache.setByContent('user-query', responseData);
 
-// ハッシュによる取得
+// Retrieve by hash
 const cachedData = caCache.getByContent(contentHash);
 ```
 
-## 開発
+## Development
 
-### ビルド
+### Build
 
 ```bash
 npm run build
 ```
 
-### テスト
+### Test
 
 ```bash
 npm test
 ```
 
-### 型チェック
+### Type Check
 
 ```bash
 npm run typegen
 ```
 
-## 設定
+## Configuration
 
-### TypeScript設定
+### TypeScript Configuration
 
 ```json
 // tsconfig.json
@@ -204,7 +204,7 @@ npm run typegen
 }
 ```
 
-### Next.js設定
+### Next.js Configuration
 
 ```javascript
 // next.config.js
@@ -224,33 +224,33 @@ const nextConfig = {
 module.exports = nextConfig;
 ```
 
-## 例
+## Examples
 
-完全な例は `examples/` ディレクトリを参照してください：
+Complete examples can be found in the `examples/` directory:
 
-- `examples/nextjs-app/`: Next.jsを使用した完全なアプリケーション例
+- `examples/nextjs-app/`: Complete application example using Next.js
 
-## 貢献
+## Contributing
 
-1. このリポジトリをフォーク
-2. 機能ブランチを作成 (`git checkout -b feature/amazing-feature`)
-3. 変更をコミット (`git commit -m 'Add amazing feature'`)
-4. ブランチをプッシュ (`git push origin feature/amazing-feature`)
-5. Pull Requestを作成
+1. Fork this repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Create a Pull Request
 
-## ライセンス
+## License
 
-MIT License - 詳細は [LICENSE](LICENSE) ファイルを参照してください。
+MIT License - See [LICENSE](LICENSE) file for details.
 
-## 標準準拠
+## Standards Compliance
 
-このライブラリは以下の標準に準拠しています：
+This library complies with the following standards:
 
 - [ISO/IEC 39075:2024](https://www.gqlstandards.org/) - Information technology — Database languages — GQL
 - [GraphQL Specification](https://spec.graphql.org/)
 - [RFC 8949 - HTTP Message Signatures](https://datatracker.ietf.org/doc/rfc8949/)
 
-## 関連プロジェクト
+## Related Projects
 
 - [hataori](https://www.npmjs.com/package/hataori) - TypeScript Merkle Lambda Linker
 - [GraphQL](https://graphql.org/) - Query language for APIs

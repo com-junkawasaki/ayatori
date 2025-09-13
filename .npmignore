@@ -1,0 +1,45 @@
+# Source files
+src/
+examples/
+scripts/
+
+# Next.js build artifacts
+.next/
+next-env.d.ts
+out/
+
+# Development files
+.git/
+.gitignore
+*.log
+*.lock
+package-lock.json
+
+# Build artifacts (keep dist/)
+*.tsbuildinfo
+tsconfig.json
+
+# Documentation
+README.md
+DESIGN.md
+
+# Configuration files
+.eslintrc*
+.prettierrc*
+
+# Test files
+**/*.test.*
+**/*.spec.*
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Other
+dag.jsonnet
