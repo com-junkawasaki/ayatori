@@ -1,0 +1,47 @@
+{
+  "name": "iso-gql-client",
+  "version": "1.0.0",
+  "description": "ISO/IEC 39075:2024 GQL Client with TypeScript type safety and Merkle DAG caching",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "jsonnet dag.jsonnet && tsc --watch",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts",
+    "typegen": "ts-node scripts/generate-types.ts"
+  },
+  "keywords": [
+    "gql",
+    "iso",
+    "typescript",
+    "merkle-dag",
+    "nextjs",
+    "graph-database"
+  ],
+  "author": "jun784",
+  "license": "MIT",
+  "dependencies": {
+    "graphql": "^16.8.1",
+    "merkle-tools": "^1.4.1",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.5.0",
+    "@types/node": "^20.0.0",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "hataori": "^1.0.0",
+    "jest": "^29.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.3.0"
+  },
+  "peerDependencies": {
+    "next": "^13.0.0 || ^14.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  }
+}
